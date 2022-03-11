@@ -1,0 +1,9 @@
+{
+"ServerIP":"192.168.62.113",
+ "ServerPort":"4840",
+ "nodeId" : "ns=4;s=SYS_UP",
+ "userName": "adm",
+ "password": "adm"
+
+
+}

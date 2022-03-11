@@ -5,13 +5,14 @@ const {
     TimestampsToReturn
 } = require("node-opcua");
 const async = require("async");
+const config = require('./config.json');
 
-const ServerIP="192.168.62.113";
-const ServerPort="4840"
-const nodeId = "ns=4;s=SYS_UP";
+const nodeId = config.nodeId;
+const usr=config.userName;
+const pass=config.password;
 
 const client = OPCUAClient.create({ endpointMustExist: false });
-var endpointUrl = "opc.tcp://" + ServerIP + ":" + ServerPort;
+var endpointUrl = "opc.tcp://" + config.ServerIP + ":" + config.ServerPort;
 console.log(endpointUrl);
 
 /** @type ClientSession */
@@ -37,8 +38,8 @@ async.series([
     // step 2 : createSession
     function (callback) {
         userIdentity = {
-            userName: "adm",
-            password: "adm"
+            userName: usr,
+            password: pass
         };
         client.createSession(userIdentity, function (err, session) {
             if (!err) {
